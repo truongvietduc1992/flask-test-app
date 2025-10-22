@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Flask Web App</title>
@@ -7,4 +7,370 @@
     <h1>Chào mừng bạn đến với Flask Web App!</h1>
     <p>Đây là trang HTML đầu tiên của bạn.</p>
 </body>
+</html> -->
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cửa hàng cà phê — Hạt & Phin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      :root{--brand:#6f4e37;--brand-dark:#5a3f2c}
+      body{font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+      .hero{background:linear-gradient(90deg, rgba(111,78,55,0.08), rgba(111,78,55,0.02)); padding:4rem 0}
+      .product-card img{height:200px; object-fit:cover}
+      .badge-origin{background:rgba(255,255,255,0.85); color:var(--brand); border:1px solid rgba(0,0,0,0.06)}
+      .btn-primary{background:var(--brand); border-color:var(--brand)}
+      footer{background:#f8f9fa}
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=80&q=60" alt="logo" width="40" height="40" class="rounded-circle me-2">
+          <div>
+            <div style="font-weight:700; color:var(--brand)">Hạt & Phin</div>
+            <small class="text-muted">Cà phê nguyên chất</small>
+          </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link active" href="#home">Trang chủ</a></li>
+            <li class="nav-item"><a class="nav-link" href="#products">Sản phẩm</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">Về chúng tôi</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Liên hệ</a></li>
+          </ul>
+          <div class="d-flex ms-lg-3">
+            <button class="btn btn-outline-secondary me-2">Tìm</button>
+            <button class="btn btn-outline-secondary">Giỏ (0)</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-5" style="color:var(--brand)">Cà phê nguyên liệu — Hạt rang tươi, hương vị thuần khiết</h1>
+            <p class="lead text-muted">Chúng tôi chọn lọc hạt Arabica và Robusta từ các vùng trồng nổi tiếng: Đà Lạt, Buôn Ma Thuột, Việt Nam. Giao hàng nhanh — đóng gói hút chân không.</p>
+            <a href="#products" class="btn btn-primary btn-lg me-2">Xem sản phẩm</a>
+            <a href="#about" class="btn btn-outline-secondary btn-lg">Về chúng tôi</a>
+          </div>
+          <div class="col-lg-6 text-center mt-4 mt-lg-0">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80" alt="cà phê" class="img-fluid rounded shadow-sm">
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="h3">Sản phẩm bán chạy</h2>
+          <div>
+            <select class="form-select form-select-sm" id="filterOrigin" style="width:160px">
+              <option value="all">Tất cả nguồn gốc</option>
+              <option value="dalat">Đà Lạt</option>
+              <option value="buon">Buôn Ma Thuột</option>
+              <option value="coffeehouse">Pha trộn</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row g-4" id="productGrid">
+          <!-- Product 1 -->
+          <div class="col-sm-6 col-md-4 col-lg-3" data-origin="dalat">
+            <div class="card product-card h-100 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1484981184820-2e84ea0e2d3f?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Arabica Đà Lạt">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Arabica Đà Lạt 250g</h5>
+                <p class="mb-1"><span class="badge badge-origin px-2 py-1">Đà Lạt</span> • Hương hoa quả</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">₫120,000</div>
+                    <small class="text-muted">250g / Hạt nguyên chất</small>
+                  </div>
+                  <div>
+                    <button class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#quickView" data-name="Arabica Đà Lạt 250g" data-img="https://images.unsplash.com/photo-1484981184820-2e84ea0e2d3f?auto=format&fit=crop&w=800&q=60" data-price="₫120,000">Xem</button>
+                    <button class="btn btn-sm btn-primary add-cart">Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="col-sm-6 col-md-4 col-lg-3" data-origin="buon">
+            <div class="card product-card h-100 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Robusta Buôn Ma Thuột">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Robusta Buôn Ma Thuột 500g</h5>
+                <p class="mb-1"><span class="badge badge-origin px-2 py-1">Buôn Ma Thuột</span> • Vị đậm, hậu cay</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">₫150,000</div>
+                    <small class="text-muted">500g / Rang vừa</small>
+                  </div>
+                  <div>
+                    <button class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#quickView" data-name="Robusta Buôn Ma Thuột 500g" data-img="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=800&q=60" data-price="₫150,000">Xem</button>
+                    <button class="btn btn-sm btn-primary add-cart">Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="col-sm-6 col-md-4 col-lg-3" data-origin="coffeehouse">
+            <div class="card product-card h-100 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Pha trộn signature">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Signature Blend 250g</h5>
+                <p class="mb-1"><span class="badge badge-origin px-2 py-1">Pha trộn</span> • Cân bằng, hương cacao</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">₫130,000</div>
+                    <small class="text-muted">250g / Blend</small>
+                  </div>
+                  <div>
+                    <button class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#quickView" data-name="Signature Blend 250g" data-img="https://images.unsplash.com/photo-1511407397940-d57f68e81203?auto=format&fit=crop&w=800&q=60" data-price="₫130,000">Xem</button>
+                    <button class="btn btn-sm btn-primary add-cart">Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="col-sm-6 col-md-4 col-lg-3" data-origin="dalat">
+            <div class="card product-card h-100 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Cà phê rang sáng">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Arabica Rang Sáng 200g</h5>
+                <p class="mb-1"><span class="badge badge-origin px-2 py-1">Đà Lạt</span> • Hương hoa, acidic nhẹ</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">₫110,000</div>
+                    <small class="text-muted">200g / Rang sáng</small>
+                  </div>
+                  <div>
+                    <button class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#quickView" data-name="Arabica Rang Sáng 200g" data-img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=60" data-price="₫110,000">Xem</button>
+                    <button class="btn btn-sm btn-primary add-cart">Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 5 -->
+          <div class="col-sm-6 col-md-4 col-lg-3" data-origin="buon">
+            <div class="card product-card h-100 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Hạt robusta">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Robusta Dark 250g</h5>
+                <p class="mb-1"><span class="badge badge-origin px-2 py-1">Buôn Ma Thuột</span> • Đậm, thích hợp pha phin</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">₫95,000</div>
+                    <small class="text-muted">250g / Rang đậm</small>
+                  </div>
+                  <div>
+                    <button class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#quickView" data-name="Robusta Dark 250g" data-img="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=800&q=60" data-price="₫95,000">Xem</button>
+                    <button class="btn btn-sm btn-primary add-cart">Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 6 -->
+          <div class="col-sm-6 col-md-4 col-lg-3" data-origin="coffeehouse">
+            <div class="card product-card h-100 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1526178615895-6376f9c4f9b9?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Decaf">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Decaf Gentle 250g</h5>
+                <p class="mb-1"><span class="badge badge-origin px-2 py-1">Pha trộn</span> • Ít cafein, giữ hương</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">₫140,000</div>
+                    <small class="text-muted">250g / Decaf</small>
+                  </div>
+                  <div>
+                    <button class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#quickView" data-name="Decaf Gentle 250g" data-img="https://images.unsplash.com/photo-1526178615895-6376f9c4f9b9?auto=format&fit=crop&w=800&q=60" data-price="₫140,000">Xem</button>
+                    <button class="btn btn-sm btn-primary add-cart">Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 7 -->
+          <div class="col-sm-6 col-md-4 col-lg-3" data-origin="dalat">
+            <div class="card product-card h-100 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Single Origin">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Single Origin Đà Lạt 500g</h5>
+                <p class="mb-1"><span class="badge badge-origin px-2 py-1">Đà Lạt</span> • Hương cam, chocolate</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">₫220,000</div>
+                    <small class="text-muted">500g / Hạt nguyên chất</small>
+                  </div>
+                  <div>
+                    <button class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#quickView" data-name="Single Origin Đà Lạt 500g" data-img="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=60" data-price="₫220,000">Xem</button>
+                    <button class="btn btn-sm btn-primary add-cart">Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 8 -->
+          <div class="col-sm-6 col-md-4 col-lg-3" data-origin="coffeehouse">
+            <div class="card product-card h-100 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Cold Brew">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Cold Brew Ready 1L</h5>
+                <p class="mb-1"><span class="badge badge-origin px-2 py-1">Pha trộn</span> • Thích hợp làm cold brew</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">₫75,000</div>
+                    <small class="text-muted">1L / Đóng gói</small>
+                  </div>
+                  <div>
+                    <button class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#quickView" data-name="Cold Brew Ready 1L" data-img="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=60" data-price="₫75,000">Xem</button>
+                    <button class="btn btn-sm btn-primary add-cart">Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK VIEW MODAL -->
+    <div class="modal fade" id="quickView" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6"><img id="qv-img" src="" alt="" class="img-fluid rounded"></div>
+              <div class="col-md-6">
+                <h4 id="qv-name"></h4>
+                <p id="qv-price" class="h5 text-danger"></p>
+                <p class="text-muted">Mô tả ngắn: hạt cà phê chọn lọc, đóng gói hút chân không để giữ hương vị.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-primary add-cart">Thêm vào giỏ</button>
+                  <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-5 bg-white">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h3>Về Hạt & Phin</h3>
+            <p class="text-muted">Chúng tôi là cửa hàng nhỏ chuyên cung cấp hạt cà phê nguyên chất, kết nối trực tiếp với nông dân. Cam kết không trộn tạp chất, giao hàng toàn quốc.</p>
+            <ul>
+              <li>Hạt sạch, truy xuất nguồn gốc</li>
+              <li>Rang theo đơn hàng để giữ độ tươi</li>
+              <li>Giao hàng nhanh, đóng gói chuyên nghiệp</li>
+            </ul>
+          </div>
+          <div class="col-md-6 text-center">
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded shadow-sm" alt="farm">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-5">
+      <div class="container">
+        <h3>Liên hệ</h3>
+        <p class="text-muted">Gửi yêu cầu hoặc đặt hàng qua form dưới đây.</p>
+        <form class="row g-3" onsubmit="event.preventDefault(); alert('Form gửi (demo) — bạn có thể tích hợp backend để nhận yêu cầu.');">
+          <div class="col-md-6">
+            <label class="form-label">Họ tên</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Nội dung</label>
+            <textarea class="form-control" rows="4" required></textarea>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary">Gửi</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-4">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div>
+          <strong>Hạt & Phin</strong><br>
+          <small class="text-muted">© "Hạt & Phin" — Mẫu demo</small>
+        </div>
+        <div>
+          <small class="text-muted">Theo dõi: Instagram • Facebook</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Quick view modal population
+      const quickView = document.getElementById('quickView');
+      quickView.addEventListener('show.bs.modal', e => {
+        const btn = e.relatedTarget;
+        const name = btn.getAttribute('data-name');
+        const img = btn.getAttribute('data-img');
+        const price = btn.getAttribute('data-price');
+        document.getElementById('qv-name').textContent = name;
+        document.getElementById('qv-img').src = img;
+        document.getElementById('qv-price').textContent = price;
+      });
+
+      // Simple cart counter demo
+      let cartCount = 0;
+      document.querySelectorAll('.add-cart').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          cartCount += 1;
+          document.querySelectorAll('.btn-outline-secondary').forEach(()=>{});
+          const cartBtn = document.querySelectorAll('.navbar .btn')[1];
+          if(cartBtn) cartBtn.textContent = `Giỏ (${cartCount})`;
+        });
+      });
+
+      // Origin filter
+      document.getElementById('filterOrigin').addEventListener('change', e=>{
+        const val = e.target.value;
+        document.querySelectorAll('#productGrid > div').forEach(card=>{
+          if(val === 'all' || card.getAttribute('data-origin') === val) card.style.display=''; else card.style.display='none';
+        });
+      });
+    </script>
+  </body>
 </html>
